@@ -22,8 +22,7 @@
   --color-sand-50: #FBF7EE;
 
   --color-background: #ffffff;
-  --color-foreground: #1A1D1B;
-
+  --color-foreground: #1d1d1f;
 }
 
 [dir="rtl"] {
@@ -52,19 +51,57 @@ body {
   outline-offset: 2px;
 }
 
+/* Orbit animation */
+@keyframes orbit-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbit-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-orbit-slow {
+  animation: orbit-slow 60s linear infinite;
+}
+
+.animate-orbit-reverse {
+  animation: orbit-reverse 45s linear infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #EEEFEE;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #5BBF8A;
+  background: #d1d1d6;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2A7D5B;
+  background: #86868b;
 }

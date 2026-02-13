@@ -19,43 +19,43 @@ export function AboutPreview({ locale }: { locale: string }) {
 
   return (
     <>
-      {/* What is Madar */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      {/* What is Madar + Conversation Partner */}
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
             >
-              <p className="text-sm font-semibold uppercase tracking-widest text-madar-500 mb-4">
+              <p className="text-[13px] font-medium uppercase tracking-[0.2em] text-madar-500 mb-5">
                 {locale === "ar" ? "من نحن" : "About"}
               </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-madar-900 tracking-tight leading-tight">
+              <h2 className="text-4xl sm:text-5xl font-semibold text-[#1d1d1f] tracking-[-0.02em] leading-[1.1]">
                 {t("aboutTitle")}
               </h2>
-              <p className="mt-6 text-gray-600 leading-relaxed text-lg">
+              <p className="mt-7 text-[17px] text-[#6e6e73] leading-[1.65]">
                 {t("aboutDescription")}
               </p>
-              <div className="mt-8">
-                <Button href={`/madar/${locale}/about`} variant="secondary" size="lg">
-                  {t("aboutCta")}
+              <div className="mt-10">
+                <Button href={`/${locale}/about`} variant="ghost" className="text-madar-600 font-medium text-[15px] px-0 hover:bg-transparent hover:text-madar-700">
+                  {t("aboutCta")} &rarr;
                 </Button>
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-madar-50 rounded-3xl p-8 lg:p-10"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="bg-[#f5f5f7] rounded-[28px] p-10 lg:p-12"
             >
-              <h3 className="text-2xl font-bold text-madar-900 mb-4">
+              <h3 className="text-2xl font-semibold text-[#1d1d1f] tracking-tight mb-5">
                 {t("conversationTitle")}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-[16px] text-[#6e6e73] leading-[1.7]">
                 {t("conversationDescription")}
               </p>
             </motion.div>
@@ -64,20 +64,20 @@ export function AboutPreview({ locale }: { locale: string }) {
       </section>
 
       {/* Who is Madar For */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-32 bg-[#f5f5f7]">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-20"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-madar-900 tracking-tight">
+            <h2 className="text-4xl sm:text-5xl font-semibold text-[#1d1d1f] tracking-[-0.02em]">
               {t("audienceTitle")}
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {audiences.map((a, i) => {
               const Icon = audienceIcons[i];
               return (
@@ -85,15 +85,15 @@ export function AboutPreview({ locale }: { locale: string }) {
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-lg hover:border-madar-100 transition-all duration-300"
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="bg-white rounded-[20px] p-7 hover:shadow-[0_4px_30px_rgba(0,0,0,0.06)] transition-all duration-500"
                 >
-                  <div className="w-12 h-12 bg-madar-50 rounded-xl flex items-center justify-center mb-4">
-                    <Icon className="text-madar-600" size={24} />
+                  <div className="w-11 h-11 bg-madar-50 rounded-[12px] flex items-center justify-center mb-5">
+                    <Icon className="text-madar-600" size={20} />
                   </div>
-                  <h3 className="text-lg font-semibold text-madar-900 mb-2">{a.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{a.desc}</p>
+                  <h3 className="text-[17px] font-semibold text-[#1d1d1f] mb-2">{a.title}</h3>
+                  <p className="text-[15px] text-[#6e6e73] leading-[1.6]">{a.desc}</p>
                 </motion.div>
               );
             })}

@@ -33,7 +33,6 @@ export function JoinCommunity({ locale }: { locale: string }) {
       });
       setSubmitted(true);
     } catch {
-      // Fallback: open mailto
       const name = formData.get("name") as string;
       const email = formData.get("email") as string;
       const role = formData.get("role") as string;
@@ -50,33 +49,43 @@ export function JoinCommunity({ locale }: { locale: string }) {
   };
 
   return (
-    <section id="join-community" className="py-24 bg-madar-900 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="join-community" className="relative py-32 bg-[#050505] scroll-mt-20 overflow-hidden">
+      {/* Orbital background accent */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30">
+        <div className="absolute w-[500px] h-[500px] animate-orbit-slow" style={{ animationDuration: "70s" }}>
+          <svg viewBox="0 0 500 500" fill="none" className="w-full h-full">
+            <circle cx="250" cy="250" r="240" stroke="rgba(42,125,91,0.1)" strokeWidth="0.5" />
+            <circle cx="490" cy="250" r="3" fill="rgba(42,125,91,0.3)" />
+          </svg>
+        </div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           {/* Left - Text */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-semibold text-white tracking-[-0.02em] leading-[1.1]">
               {t("joinTitle")}
             </h2>
-            <p className="mt-6 text-lg text-madar-200 leading-relaxed">
+            <p className="mt-7 text-[17px] text-white/45 leading-[1.7]">
               {t("joinDescription")}
             </p>
 
-            <div className="mt-10 space-y-4">
+            <div className="mt-12 space-y-4">
               {[
                 isAr ? "مصممون ومبدعون" : "Designers & Creatives",
                 isAr ? "حكومات ومؤسسات" : "Governments & Institutions",
                 isAr ? "أكاديميون وباحثون" : "Academics & Researchers",
                 isAr ? "مؤتمرات ومجتمعات" : "Conferences & Communities",
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3 text-madar-200">
-                  <CheckCircle size={18} className="text-madar-400 shrink-0" />
-                  <span>{item}</span>
+                <div key={i} className="flex items-center gap-3 text-white/50">
+                  <CheckCircle size={16} className="text-madar-400 shrink-0" />
+                  <span className="text-[15px]">{item}</span>
                 </div>
               ))}
             </div>
@@ -84,70 +93,70 @@ export function JoinCommunity({ locale }: { locale: string }) {
 
           {/* Right - Form */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
           >
             {submitted ? (
-              <div className="bg-madar-800/60 border border-madar-700/30 rounded-3xl p-10 text-center">
-                <div className="w-16 h-16 bg-madar-600/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle className="text-madar-300" size={32} />
+              <div className="bg-white/[0.03] border border-white/[0.06] rounded-[28px] p-10 text-center">
+                <div className="w-14 h-14 bg-madar-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle className="text-madar-400" size={28} />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">
+                <h3 className="text-2xl font-semibold text-white mb-3">
                   {t("joinSuccessTitle")}
                 </h3>
-                <p className="text-madar-200 leading-relaxed">
+                <p className="text-white/45 leading-relaxed">
                   {t("joinSuccessMessage")}
                 </p>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="bg-madar-800/60 border border-madar-700/30 rounded-3xl p-8 sm:p-10 space-y-5"
+                className="bg-white/[0.03] border border-white/[0.06] rounded-[28px] p-8 sm:p-10 space-y-5"
               >
                 <input type="hidden" name="_subject" value="New Madar Community Member" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_template" value="table" />
 
                 <div>
-                  <label className="block text-sm font-medium text-madar-200 mb-2">
+                  <label className="block text-[13px] font-medium text-white/50 mb-2">
                     {t("joinNameLabel")}
                   </label>
                   <input
                     type="text"
                     name="name"
                     required
-                    className="w-full px-4 py-3 bg-madar-900/50 border border-madar-700/50 rounded-xl text-white text-sm placeholder-madar-400 focus:ring-2 focus:ring-madar-400 focus:border-transparent transition-all"
+                    className="w-full px-4 py-3.5 bg-white/[0.04] border border-white/[0.08] rounded-[14px] text-white text-[15px] placeholder-white/25 focus:ring-2 focus:ring-madar-400/50 focus:border-transparent transition-all"
                     placeholder={isAr ? "اسمك الكامل" : "Your full name"}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-madar-200 mb-2">
+                  <label className="block text-[13px] font-medium text-white/50 mb-2">
                     {t("joinEmailLabel")}
                   </label>
                   <input
                     type="email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 bg-madar-900/50 border border-madar-700/50 rounded-xl text-white text-sm placeholder-madar-400 focus:ring-2 focus:ring-madar-400 focus:border-transparent transition-all"
+                    className="w-full px-4 py-3.5 bg-white/[0.04] border border-white/[0.08] rounded-[14px] text-white text-[15px] placeholder-white/25 focus:ring-2 focus:ring-madar-400/50 focus:border-transparent transition-all"
                     placeholder={isAr ? "بريدك الإلكتروني" : "your@email.com"}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-madar-200 mb-2">
+                  <label className="block text-[13px] font-medium text-white/50 mb-2">
                     {t("joinRoleLabel")}
                   </label>
                   <select
                     name="role"
                     required
-                    className="w-full px-4 py-3 bg-madar-900/50 border border-madar-700/50 rounded-xl text-white text-sm focus:ring-2 focus:ring-madar-400 focus:border-transparent transition-all"
+                    className="w-full px-4 py-3.5 bg-white/[0.04] border border-white/[0.08] rounded-[14px] text-white text-[15px] focus:ring-2 focus:ring-madar-400/50 focus:border-transparent transition-all"
                   >
-                    <option value="" className="bg-madar-900">{isAr ? "اختر..." : "Select..."}</option>
+                    <option value="" className="bg-[#1a1a1a]">{isAr ? "اختر..." : "Select..."}</option>
                     {roles.map((role) => (
-                      <option key={role.value} value={role.value} className="bg-madar-900">
+                      <option key={role.value} value={role.value} className="bg-[#1a1a1a]">
                         {role.label}
                       </option>
                     ))}
@@ -155,13 +164,13 @@ export function JoinCommunity({ locale }: { locale: string }) {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-madar-200 mb-2">
+                  <label className="block text-[13px] font-medium text-white/50 mb-2">
                     {t("joinMessageLabel")}
                   </label>
                   <textarea
                     name="message"
                     rows={3}
-                    className="w-full px-4 py-3 bg-madar-900/50 border border-madar-700/50 rounded-xl text-white text-sm placeholder-madar-400 focus:ring-2 focus:ring-madar-400 focus:border-transparent transition-all resize-none"
+                    className="w-full px-4 py-3.5 bg-white/[0.04] border border-white/[0.08] rounded-[14px] text-white text-[15px] placeholder-white/25 focus:ring-2 focus:ring-madar-400/50 focus:border-transparent transition-all resize-none"
                     placeholder={isAr ? "أخبرنا عن اهتمامك..." : "Tell us about your interest..."}
                   />
                 </div>
@@ -169,12 +178,12 @@ export function JoinCommunity({ locale }: { locale: string }) {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-madar-900 font-semibold rounded-full hover:bg-madar-50 transition-colors shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-white text-[#0a0a0a] font-semibold rounded-full hover:bg-white/90 transition-all shadow-[0_0_30px_rgba(255,255,255,0.06)] disabled:opacity-60 disabled:cursor-not-allowed text-[15px]"
                 >
                   {submitting
                     ? (isAr ? "جاري الإرسال..." : "Submitting...")
                     : t("joinSubmitCta")}
-                  {!submitting && <ArrowRight size={18} />}
+                  {!submitting && <ArrowRight size={16} />}
                 </button>
               </form>
             )}
