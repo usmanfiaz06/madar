@@ -1,0 +1,108 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "events": "Events",
+    "resources": "Resources",
+    "insights": "Insights",
+    "contact": "Contact",
+    "language": "العربية"
+  },
+  "hero": {
+    "title": "The Digital Design Language of Riyadh",
+    "subtitle": "A Kingdom Lens on How States Communicate Trust, Power, and Legitimacy Through Software.",
+    "cta": "Read the White Paper",
+    "ctaSecondary": "Explore Our Work"
+  },
+  "home": {
+    "aboutTitle": "What is Madar?",
+    "aboutDescription": "Madar is a research and advisory initiative exploring how digital design shapes institutional trust. We believe that in the age of digital governance, design is no longer downstream of policy — it is where policy becomes real.",
+    "aboutCta": "Learn More About Us",
+    "eventsTitle": "Roundtables & Events",
+    "eventsDescription": "We convene leaders from government, technology, and design to explore how digital infrastructure can reflect institutional values at civilizational scale.",
+    "eventsCta": "View All Events",
+    "resourcesTitle": "Featured Resources",
+    "resourcesDescription": "Research, white papers, and frameworks that define the emerging discipline of institutional design language.",
+    "resourcesCta": "Browse All Resources",
+    "insightsTitle": "Latest Insights",
+    "insightsDescription": "Perspectives on digital governance, design systems, and the future of state-citizen interaction.",
+    "insightsCta": "Read All Insights",
+    "principlesTitle": "Our Design Principles",
+    "principle1Title": "Authority Without Intimidation",
+    "principle1Desc": "Government interfaces should project competence and care, not bureaucratic power.",
+    "principle2Title": "Clarity Before Efficiency",
+    "principle2Desc": "A system that is fast but unclear is not serving the citizen. Comprehension must precede speed.",
+    "principle3Title": "Hospitality as Institutional Behavior",
+    "principle3Desc": "Digital services should welcome, guide, and reassure — as a host would treat a guest.",
+    "principle4Title": "Arabic-First, Globally Legible",
+    "principle4Desc": "Design must begin in Arabic and feel native, while remaining accessible to a global audience."
+  },
+  "about": {
+    "title": "About Madar",
+    "subtitle": "Shaping the digital design language of governance.",
+    "missionTitle": "Our Mission",
+    "missionText": "Madar exists to define and advance the emerging discipline of institutional design language — the deliberate, values-driven approach to how governments communicate through digital interfaces. We believe design is not an implementation detail; it is the place where governance is interpreted.",
+    "approachTitle": "Our Approach",
+    "approachText": "We operate at the intersection of policy, technology, and design. Through rigorous research, expert roundtables, and published frameworks, we help governments and institutions build digital experiences that reflect their values consistently across agencies, sectors, and citizen journeys.",
+    "focusTitle": "Focus Areas",
+    "focus1Title": "Design as Infrastructure",
+    "focus1Desc": "Treating design systems as critical public infrastructure, not aesthetic choices.",
+    "focus2Title": "Trust Architecture",
+    "focus2Desc": "Building digital experiences that cultivate and maintain institutional trust.",
+    "focus3Title": "Cultural Authenticity",
+    "focus3Desc": "Ensuring digital governance reflects the cultural context it serves.",
+    "focus4Title": "Citizen Experience",
+    "focus4Desc": "Placing the citizen journey at the center of all digital design decisions.",
+    "kingdomTitle": "The Kingdom Context",
+    "kingdomText": "Saudi Arabia is undergoing deliberate, centrally articulated transformation while retaining deep sources of cultural and historical legitimacy. When transformation is intentional, design becomes a tool of direction, not correction. Madar helps ensure that this transformation is expressed consistently across every digital touchpoint."
+  },
+  "events": {
+    "title": "Events & Roundtables",
+    "subtitle": "Convening global experts to shape the future of institutional digital design.",
+    "upcomingTitle": "Upcoming Events",
+    "pastTitle": "Past Events",
+    "noUpcoming": "New events will be announced soon. Subscribe to stay updated.",
+    "registerCta": "Register",
+    "detailsCta": "View Details",
+    "subscribeCta": "Subscribe for Updates"
+  },
+  "resources": {
+    "title": "Resources",
+    "subtitle": "Research, white papers, and frameworks advancing institutional design language.",
+    "downloadCta": "Download PDF",
+    "readCta": "Read Online",
+    "featuredTitle": "Featured",
+    "allTitle": "All Resources",
+    "filterAll": "All",
+    "filterWhitePapers": "White Papers",
+    "filterReports": "Reports",
+    "filterFrameworks": "Frameworks"
+  },
+  "insights": {
+    "title": "Insights",
+    "subtitle": "Perspectives on digital governance, design systems, and institutional trust.",
+    "readMore": "Read More",
+    "allInsights": "All Insights",
+    "latestTitle": "Latest"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Interested in collaborating with Madar? We'd love to hear from you.",
+    "nameLabel": "Full Name",
+    "emailLabel": "Email Address",
+    "organizationLabel": "Organization",
+    "messageLabel": "Message",
+    "submitCta": "Send Message",
+    "infoTitle": "Contact Information",
+    "emailInfo": "hello@madar.sa",
+    "locationInfo": "Riyadh, Saudi Arabia",
+    "socialTitle": "Follow Us"
+  },
+  "footer": {
+    "description": "Advancing the digital design language of governance. A research and advisory initiative based in Riyadh.",
+    "quickLinks": "Quick Links",
+    "connect": "Connect",
+    "copyright": "2026 Madar. All rights reserved.",
+    "tagline": "Design is where governance is interpreted."
+  }
+}
