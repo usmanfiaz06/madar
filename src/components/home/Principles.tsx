@@ -17,24 +17,18 @@ export function Principles() {
   ];
 
   return (
-    <section className="relative py-32 bg-[#050505] overflow-hidden">
-      {/* Subtle orbital background */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40">
-        <div className="absolute w-[700px] h-[700px] animate-orbit-slow" style={{ animationDuration: "80s" }}>
-          <svg viewBox="0 0 700 700" fill="none" className="w-full h-full">
-            <circle cx="350" cy="350" r="340" stroke="rgba(42,125,91,0.08)" strokeWidth="0.5" />
-          </svg>
-        </div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section className="py-24 lg:py-32 bg-madar-50">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-semibold text-white tracking-[-0.02em]">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-madar-200 rounded-full text-madar-600 text-xs font-semibold uppercase tracking-wider mb-6">
+            Guiding Values
+          </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-madar-900 tracking-[-0.03em]">
             {t("principlesTitle")}
           </h2>
         </motion.div>
@@ -45,17 +39,21 @@ export function Principles() {
             return (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-white/[0.03] border border-white/[0.06] rounded-[20px] p-8 text-center hover:bg-white/[0.05] hover:border-white/[0.10] transition-all duration-500 group"
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="bg-white rounded-2xl p-8 text-center hover:shadow-xl hover:shadow-madar-600/5 transition-all duration-500 group border border-white hover:border-madar-100"
               >
-                <div className="w-12 h-12 bg-madar-500/10 rounded-[14px] flex items-center justify-center mx-auto mb-6 group-hover:bg-madar-500/15 transition-colors">
-                  <Icon className="text-madar-400" size={22} />
+                <div className="w-14 h-14 bg-madar-100 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-madar-200 group-hover:scale-110 transition-all duration-300">
+                  <Icon className="text-madar-600" size={24} />
                 </div>
-                <h3 className="text-white font-medium text-[17px] mb-3 tracking-tight">{principle.title}</h3>
-                <p className="text-white/40 text-[14px] leading-[1.65]">{principle.desc}</p>
+                <h3 className="text-madar-900 font-bold text-lg mb-3 tracking-tight">
+                  {principle.title}
+                </h3>
+                <p className="text-gray-500 text-[14px] leading-[1.7]">
+                  {principle.desc}
+                </p>
               </motion.div>
             );
           })}
