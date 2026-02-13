@@ -3,8 +3,6 @@
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Card } from "@/components/ui/Card";
 import { ArrowUpRight } from "lucide-react";
 
 const articles = [
@@ -78,18 +76,21 @@ export function InsightsClient() {
   return (
     <>
       {/* Hero */}
-      <section className="py-24 lg:py-32 bg-madar-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-28 lg:py-36 bg-[#f5f5f7]">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
             className="max-w-3xl"
           >
-            <h1 className="text-4xl sm:text-5xl font-bold text-madar-900 tracking-tight">
+            <p className="text-[13px] font-medium uppercase tracking-[0.2em] text-madar-500 mb-5">
+              {isAr ? "رؤى وأفكار" : "Perspectives"}
+            </p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#1d1d1f] tracking-[-0.02em] leading-[1.08]">
               {t("title")}
             </h1>
-            <p className="mt-6 text-xl text-gray-600 leading-relaxed">
+            <p className="mt-7 text-[17px] sm:text-xl text-[#6e6e73] leading-[1.65]">
               {t("subtitle")}
             </p>
           </motion.div>
@@ -97,61 +98,63 @@ export function InsightsClient() {
       </section>
 
       {/* Articles */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           {/* Featured Article */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="mb-20"
           >
-            <Card className="p-8 sm:p-12 bg-madar-50/30 border-madar-100 group cursor-pointer">
+            <div className="bg-[#f5f5f7] rounded-[28px] p-8 sm:p-12 lg:p-14 group cursor-pointer hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] transition-all duration-500">
               <span className="text-xs font-semibold uppercase tracking-wider text-madar-500">
                 {t("latestTitle")}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-madar-900 mt-3 mb-4 group-hover:text-madar-600 transition-colors">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#1d1d1f] mt-4 mb-5 group-hover:text-madar-600 transition-colors tracking-tight">
                 {isAr ? articles[0].titleAr : articles[0].titleEn}
                 <ArrowUpRight size={24} className="inline ml-2 opacity-0 group-hover:opacity-100 transition-opacity" />
               </h2>
-              <p className="text-gray-600 text-lg leading-relaxed max-w-3xl">
+              <p className="text-[16px] text-[#6e6e73] leading-[1.7] max-w-3xl">
                 {isAr ? articles[0].excerptAr : articles[0].excerptEn}
               </p>
-              <div className="mt-6 flex items-center gap-4 text-sm text-gray-400">
+              <div className="mt-7 flex items-center gap-4 text-[13px] text-[#86868b]">
                 <span>{isAr ? articles[0].dateAr : articles[0].dateEn}</span>
                 <span>{isAr ? articles[0].categoryAr : articles[0].categoryEn}</span>
                 <span>{isAr ? articles[0].readTimeAr : articles[0].readTimeEn}</span>
               </div>
-            </Card>
+            </div>
           </motion.div>
 
           {/* Article Grid */}
-          <SectionHeading title={t("allInsights")} />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-[#1d1d1f] tracking-[-0.02em] mb-10">
+            {t("allInsights")}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {articles.slice(1).map((a, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
               >
-                <Card className="h-full group cursor-pointer">
-                  <span className="text-xs text-madar-500 font-medium uppercase tracking-wider">
+                <div className="h-full bg-[#f5f5f7] rounded-[20px] p-7 group cursor-pointer hover:shadow-[0_4px_30px_rgba(0,0,0,0.06)] transition-all duration-500">
+                  <span className="text-xs text-madar-500 font-semibold uppercase tracking-wider">
                     {isAr ? a.categoryAr : a.categoryEn}
                   </span>
-                  <h3 className="text-lg font-semibold text-madar-900 mt-2 mb-3 group-hover:text-madar-600 transition-colors">
+                  <h3 className="text-[17px] font-semibold text-[#1d1d1f] mt-3 mb-3 group-hover:text-madar-600 transition-colors tracking-tight">
                     {isAr ? a.titleAr : a.titleEn}
-                    <ArrowUpRight size={16} className="inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ArrowUpRight size={15} className="inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-[14px] text-[#6e6e73] leading-[1.65]">
                     {isAr ? a.excerptAr : a.excerptEn}
                   </p>
-                  <div className="mt-4 flex items-center gap-3 text-xs text-gray-400">
+                  <div className="mt-5 flex items-center gap-3 text-xs text-[#86868b]">
                     <span>{isAr ? a.dateAr : a.dateEn}</span>
                     <span>{isAr ? a.readTimeAr : a.readTimeEn}</span>
                   </div>
-                </Card>
+                </div>
               </motion.div>
             ))}
           </div>

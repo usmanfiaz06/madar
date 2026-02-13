@@ -2,9 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { SectionHeading } from "../ui/SectionHeading";
-import { Button } from "../ui/Button";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 
 const articles = [
   {
@@ -44,36 +42,52 @@ export function LatestInsights({ locale }: { locale: string }) {
   const isAr = locale === "ar";
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12">
-          <SectionHeading title={t("insightsTitle")} subtitle={t("insightsDescription")} />
-          <Button href={`/madar/${locale}/insights`} variant="ghost" className="shrink-0">
+    <section className="py-32 bg-white">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14"
+        >
+          <div>
+            <p className="text-[13px] font-medium uppercase tracking-[0.2em] text-madar-500 mb-5">
+              {isAr ? "رؤى وأفكار" : "Perspectives"}
+            </p>
+            <h2 className="text-4xl sm:text-5xl font-semibold text-[#1d1d1f] tracking-[-0.02em]">
+              {t("insightsTitle")}
+            </h2>
+          </div>
+          <a
+            href={`/${locale}/insights`}
+            className="inline-flex items-center gap-2 text-[15px] text-madar-600 font-medium hover:text-madar-700 transition-colors shrink-0"
+          >
             {t("insightsCta")}
-          </Button>
-        </div>
+            <ArrowRight size={15} />
+          </a>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {articles.map((a, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
             >
-              <div className="h-full flex flex-col bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-lg hover:border-madar-100 transition-all duration-300 group cursor-pointer">
+              <div className="h-full flex flex-col bg-[#f5f5f7] rounded-[20px] p-7 hover:shadow-[0_4px_30px_rgba(0,0,0,0.06)] transition-all duration-500 group cursor-pointer">
                 <span className="text-xs text-madar-500 font-semibold uppercase tracking-wider">
                   {isAr ? a.categoryAr : a.categoryEn}
                 </span>
-                <h3 className="text-lg font-semibold text-madar-900 mt-3 mb-3 group-hover:text-madar-600 transition-colors">
+                <h3 className="text-[17px] font-semibold text-[#1d1d1f] mt-4 mb-3 group-hover:text-madar-600 transition-colors tracking-tight">
                   {isAr ? a.titleAr : a.titleEn}
-                  <ArrowUpRight size={16} className="inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowUpRight size={15} className="inline ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed flex-1">
+                <p className="text-[#6e6e73] text-[14px] leading-[1.65] flex-1">
                   {isAr ? a.excerptAr : a.excerptEn}
                 </p>
-                <p className="mt-4 text-xs text-gray-400">{isAr ? a.dateAr : a.dateEn}</p>
+                <p className="mt-5 text-xs text-[#86868b]">{isAr ? a.dateAr : a.dateEn}</p>
               </div>
             </motion.div>
           ))}

@@ -39,31 +39,31 @@ export function Footer({ locale }: { locale: string }) {
   };
 
   return (
-    <footer className="bg-madar-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <footer className="bg-[#1d1d1f] text-white">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div className="lg:col-span-1 space-y-4">
-            <div className="flex items-center gap-2">
-              <MadarLogo className="h-8 w-8" variant="light" />
-              <span className="text-lg font-bold tracking-tight">
+            <div className="flex items-center gap-2.5">
+              <MadarLogo className="h-7 w-7" variant="light" />
+              <span className="text-lg font-semibold tracking-tight">
                 {locale === "ar" ? "مدار" : "madar"}
               </span>
             </div>
-            <p className="text-madar-300 text-sm leading-relaxed max-w-xs">
+            <p className="text-white/40 text-[14px] leading-[1.65] max-w-xs">
               {t("description")}
             </p>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-madar-400 mb-4">
+            <h3 className="text-[12px] font-semibold uppercase tracking-[0.15em] text-white/30 mb-5">
               {t("quickLinks")}
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-3">
               {links.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-madar-300 hover:text-white transition-colors"
+                    className="text-[14px] text-white/50 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -73,21 +73,21 @@ export function Footer({ locale }: { locale: string }) {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-madar-400 mb-4">
+            <h3 className="text-[12px] font-semibold uppercase tracking-[0.15em] text-white/30 mb-5">
               {t("connect")}
             </h3>
-            <ul className="space-y-2.5 text-sm text-madar-300">
+            <ul className="space-y-3 text-[14px] text-white/50">
               <li>hello@madar.sa</li>
               <li>{locale === "ar" ? "الرياض، المملكة العربية السعودية" : "Riyadh, Saudi Arabia"}</li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-madar-400 mb-4">
+            <h3 className="text-[12px] font-semibold uppercase tracking-[0.15em] text-white/30 mb-5">
               {t("joinTitle")}
             </h3>
             {joined ? (
-              <p className="text-sm text-madar-300">
+              <p className="text-[14px] text-white/50">
                 {locale === "ar" ? "شكراً لانضمامك!" : "Thanks for joining!"}
               </p>
             ) : (
@@ -98,22 +98,22 @@ export function Footer({ locale }: { locale: string }) {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t("joinPlaceholder")}
                   required
-                  className="flex-1 px-4 py-2.5 bg-madar-800/60 border border-madar-700/50 rounded-full text-sm text-white placeholder-madar-400 focus:ring-2 focus:ring-madar-400 focus:border-transparent transition-all"
+                  className="flex-1 px-4 py-2.5 bg-white/[0.04] border border-white/[0.08] rounded-full text-[13px] text-white placeholder-white/25 focus:ring-2 focus:ring-madar-400/50 focus:border-transparent transition-all"
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2.5 bg-madar-600 text-white rounded-full hover:bg-madar-500 transition-colors"
+                  className="px-4 py-2.5 bg-white/10 text-white rounded-full hover:bg-white/15 transition-colors"
                 >
-                  <ArrowRight size={16} />
+                  <ArrowRight size={14} />
                 </button>
               </form>
             )}
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-madar-700/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-madar-400">&copy; {t("copyright")}</p>
-          <p className="text-xs text-madar-500 italic">{t("tagline")}</p>
+        <div className="mt-16 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[12px] text-white/25">&copy; {t("copyright")}</p>
+          <p className="text-[12px] text-white/20 italic">{t("tagline")}</p>
         </div>
       </div>
     </footer>
