@@ -6,6 +6,7 @@ import { Principles } from "@/components/home/Principles";
 import { FeaturedResources } from "@/components/home/FeaturedResources";
 import { EventsCTA } from "@/components/home/EventsCTA";
 import { LatestInsights } from "@/components/home/LatestInsights";
+import { JoinCommunity } from "@/components/home/JoinCommunity";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -27,6 +28,7 @@ export default async function HomePage({
       <FeaturedResources locale={locale} />
       <EventsCTA locale={locale} />
       <LatestInsights locale={locale} />
+      <JoinCommunity locale={locale} />
     </>
   );
 }

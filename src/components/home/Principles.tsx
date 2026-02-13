@@ -26,7 +26,7 @@ export function Principles() {
           light
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {principles.map((principle, i) => {
             const Icon = icons[i];
             return (
@@ -36,12 +36,12 @@ export function Principles() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-madar-800/50 border border-madar-700/30 rounded-2xl p-6 text-center"
+                className="bg-madar-800/60 border border-madar-700/30 rounded-2xl p-8 text-center hover:bg-madar-800/80 transition-colors"
               >
-                <div className="w-12 h-12 bg-madar-600/30 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Icon className="text-madar-300" size={24} />
+                <div className="w-14 h-14 bg-madar-600/20 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                  <Icon className="text-madar-300" size={26} />
                 </div>
-                <h3 className="text-white font-semibold mb-2">{principle.title}</h3>
+                <h3 className="text-white font-semibold text-lg mb-3">{principle.title}</h3>
                 <p className="text-madar-300 text-sm leading-relaxed">{principle.desc}</p>
               </motion.div>
             );

@@ -29,18 +29,16 @@ export function Header({ locale }: { locale: string }) {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-madar-100/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center gap-2">
             <MadarLogo className="h-9 w-9" />
-            <span className="text-xl font-semibold text-madar-800 tracking-tight">
+            <span className="text-xl font-bold text-madar-800 tracking-tight">
               {locale === "ar" ? "مدار" : "madar"}
             </span>
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
@@ -57,9 +55,14 @@ export function Header({ locale }: { locale: string }) {
             ))}
           </nav>
 
-          {/* Actions */}
           <div className="flex items-center gap-3">
             <LanguageSwitcher locale={locale} />
+            <Link
+              href="#join-community"
+              className="hidden lg:inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-white bg-madar-600 rounded-full hover:bg-madar-700 transition-colors"
+            >
+              {t("joinCta")}
+            </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden p-2 text-gray-600 hover:text-madar-700"
@@ -71,9 +74,8 @@ export function Header({ locale }: { locale: string }) {
         </div>
       </div>
 
-      {/* Mobile Nav */}
       {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-madar-100/50">
+        <div className="lg:hidden bg-white border-t border-gray-100">
           <nav className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
@@ -89,6 +91,13 @@ export function Header({ locale }: { locale: string }) {
                 {t(link.key)}
               </Link>
             ))}
+            <Link
+              href="#join-community"
+              onClick={() => setMobileOpen(false)}
+              className="mt-2 inline-flex items-center justify-center px-5 py-3 text-sm font-semibold text-white bg-madar-600 rounded-full hover:bg-madar-700 transition-colors"
+            >
+              {t("joinCta")}
+            </Link>
           </nav>
         </div>
       )}
