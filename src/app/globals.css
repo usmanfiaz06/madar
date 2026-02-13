@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/* ===== Madar Brand Design System ===== */
+
+@theme inline {
+  --color-madar-900: #071C13;
+  --color-madar-800: #0C2E1F;
+  --color-madar-700: #0F3D2A;
+  --color-madar-600: #1A5C3F;
+  --color-madar-500: #2A7D5B;
+  --color-madar-400: #3A9B6B;
+  --color-madar-300: #5BBF8A;
+  --color-madar-200: #A3DCBE;
+  --color-madar-100: #D5F0E2;
+  --color-madar-50: #EEFAF3;
+
+  --color-sand-900: #5C4A2A;
+  --color-sand-700: #8B7340;
+  --color-sand-500: #C4A35A;
+  --color-sand-300: #E2D1A0;
+  --color-sand-100: #F5EDD8;
+  --color-sand-50: #FBF7EE;
+
+  --color-background: #ffffff;
+  --color-foreground: #1A1D1B;
+
+}
+
+[dir="rtl"] {
+  font-family: 'Noto Sans Arabic', 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: 'Inter', 'Noto Sans Arabic', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #A3DCBE;
+  color: #071C13;
+}
+
+:focus-visible {
+  outline: 2px solid #2A7D5B;
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #EEEFEE;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5BBF8A;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2A7D5B;
+}
