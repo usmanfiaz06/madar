@@ -2,14 +2,40 @@
 
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, CheckCircle } from "lucide-react";
 
 export function ContactClient() {
   const t = useTranslations("contact");
   const { locale } = useParams();
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    try {
+      await fetch("https://formsubmit.co/ajax/hello@madar.sa", {
+        method: "POST",
+        body: formData,
+      });
+      setSubmitted(true);
+    } catch {
+      const name = formData.get("name") as string;
+      const email = formData.get("email") as string;
+      const message = formData.get("message") as string;
+      const subject = encodeURIComponent("Contact from Madar Website");
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
+      window.location.href = `mailto:hello@madar.sa?subject=${subject}&body=${body}`;
+      setSubmitted(true);
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -44,52 +70,78 @@ export function ContactClient() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-3"
             >
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {submitted ? (
+                <div className="bg-madar-50 rounded-2xl p-12 text-center">
+                  <CheckCircle className="mx-auto text-madar-500 mb-4" size={48} />
+                  <h3 className="text-2xl font-bold text-madar-900 mb-2">
+                    {locale === "ar" ? "شكراً لك!" : "Thank you!"}
+                  </h3>
+                  <p className="text-gray-600">
+                    {locale === "ar" ? "سنتواصل معك قريباً." : "We'll be in touch soon."}
+                  </p>
+                </div>
+              ) : (
+                <form className="space-y-6" onSubmit={handleSubmit}>
+                  <input type="hidden" name="_subject" value="New Contact from Madar Website" />
+                  <input type="hidden" name="_captcha" value="false" />
+                  <input type="hidden" name="_template" value="table" />
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {t("nameLabel")}
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-madar-500 focus:border-transparent transition-all bg-white"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {t("emailLabel")}
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-madar-500 focus:border-transparent transition-all bg-white"
+                        required
+                      />
+                    </div>
+                  </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {t("nameLabel")}
+                      {t("organizationLabel")}
                     </label>
                     <input
                       type="text"
+                      name="organization"
                       className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-madar-500 focus:border-transparent transition-all bg-white"
-                      required
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      {t("emailLabel")}
+                      {t("messageLabel")}
                     </label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-madar-500 focus:border-transparent transition-all bg-white"
+                    <textarea
+                      rows={6}
+                      name="message"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-madar-500 focus:border-transparent transition-all resize-none bg-white"
                       required
                     />
                   </div>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t("organizationLabel")}
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-madar-500 focus:border-transparent transition-all bg-white"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t("messageLabel")}
-                  </label>
-                  <textarea
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm focus:ring-2 focus:ring-madar-500 focus:border-transparent transition-all resize-none bg-white"
-                    required
-                  />
-                </div>
-                <Button type="submit" variant="primary" size="lg">
-                  {t("submitCta")}
-                </Button>
-              </form>
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className="inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-madar-600 rounded-full hover:bg-madar-700 transition-colors shadow-sm disabled:opacity-70"
+                  >
+                    {submitting
+                      ? (locale === "ar" ? "جاري الإرسال..." : "Sending...")
+                      : t("submitCta")}
+                  </button>
+                </form>
+              )}
             </motion.div>
 
             {/* Info */}
@@ -129,8 +181,8 @@ export function ContactClient() {
               <div className="mt-12 p-6 bg-madar-50 rounded-2xl">
                 <p className="text-madar-800 font-medium text-lg leading-relaxed italic">
                   {locale === "ar"
-                    ? "\"التصميم هو حيث تُفسَّر الحوكمة.\""
-                    : "\"Design is where governance is interpreted.\""}
+                    ? "\"التصميم هو لغة الثقة الجديدة.\""
+                    : "\"Design is the new language of trust.\""}
                 </p>
               </div>
             </motion.div>

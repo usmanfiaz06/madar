@@ -41,7 +41,7 @@ export function AboutClient() {
         </div>
       </section>
 
-      {/* Mission */}
+      {/* Mission & Approach */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -100,7 +100,7 @@ export function AboutClient() {
         </div>
       </section>
 
-      {/* Kingdom Context */}
+      {/* Starting from Riyadh */}
       <section className="py-24 bg-sand-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
@@ -117,8 +117,8 @@ export function AboutClient() {
               <div className="mt-12 py-8 px-6 bg-white rounded-2xl border border-sand-300/30">
                 <blockquote className="text-2xl font-semibold text-madar-800 italic leading-relaxed">
                   {locale === "ar"
-                    ? "عندما يكون التحول مقصوداً، يصبح التصميم أداة توجيه لا تصحيح."
-                    : "When transformation is intentional, design becomes a tool of direction, not correction."}
+                    ? "\"التصميم هو لغة الثقة الجديدة.\""
+                    : "\"Design is the new language of trust.\""}
                 </blockquote>
               </div>
             </motion.div>
