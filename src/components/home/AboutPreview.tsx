@@ -3,12 +3,13 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Button } from "../ui/Button";
-import { Paintbrush, Building2, Landmark, Users } from "lucide-react";
+import { Paintbrush, Building2, Landmark, Users, MessageCircle, ArrowRight } from "lucide-react";
 
 const audienceIcons = [Paintbrush, Landmark, Building2, Users];
 
 export function AboutPreview({ locale }: { locale: string }) {
   const t = useTranslations("home");
+  const isAr = locale === "ar";
 
   const audiences = [
     { title: t("audience1Title"), desc: t("audience1Desc") },
@@ -19,60 +20,79 @@ export function AboutPreview({ locale }: { locale: string }) {
 
   return (
     <>
-      {/* What is Madar + Conversation Partner */}
-      <section className="py-32 bg-white">
+      {/* What is Madar Section */}
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+            {/* Left - About Text (3 cols) */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7 }}
+              className="lg:col-span-3"
             >
-              <p className="text-[13px] font-medium uppercase tracking-[0.2em] text-madar-500 mb-5">
-                {locale === "ar" ? "من نحن" : "About"}
-              </p>
-              <h2 className="text-4xl sm:text-5xl font-semibold text-[#1d1d1f] tracking-[-0.02em] leading-[1.1]">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-madar-50 border border-madar-200 rounded-full text-madar-600 text-xs font-semibold uppercase tracking-wider mb-6">
+                {isAr ? "من نحن" : "About"}
+              </span>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-madar-900 tracking-[-0.03em] leading-[1.05]">
                 {t("aboutTitle")}
               </h2>
-              <p className="mt-7 text-[17px] text-[#6e6e73] leading-[1.65]">
+              <p className="mt-6 text-lg text-gray-500 leading-[1.7] max-w-2xl">
                 {t("aboutDescription")}
               </p>
-              <div className="mt-10">
-                <Button href={`/${locale}/about`} variant="ghost" className="text-madar-600 font-medium text-[15px] px-0 hover:bg-transparent hover:text-madar-700">
-                  {t("aboutCta")} &rarr;
+              <div className="mt-8">
+                <Button
+                  href={`/${locale}/about`}
+                  variant="ghost"
+                  className="text-madar-600 font-semibold text-[15px] px-0 hover:bg-transparent hover:text-madar-700 gap-2"
+                >
+                  {t("aboutCta")}
+                  <ArrowRight size={16} />
                 </Button>
               </div>
             </motion.div>
 
+            {/* Right - Conversation Partner Featured Card (2 cols) */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, delay: 0.15 }}
-              className="bg-[#f5f5f7] rounded-[28px] p-10 lg:p-12"
+              className="lg:col-span-2"
             >
-              <h3 className="text-2xl font-semibold text-[#1d1d1f] tracking-tight mb-5">
-                {t("conversationTitle")}
-              </h3>
-              <p className="text-[16px] text-[#6e6e73] leading-[1.7]">
-                {t("conversationDescription")}
-              </p>
+              <div className="h-full bg-madar-600 rounded-3xl p-8 lg:p-10 text-white relative overflow-hidden">
+                {/* Decorative circle */}
+                <div className="absolute -top-12 -right-12 w-40 h-40 bg-madar-500/30 rounded-full blur-2xl" />
+                <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-madar-400/20 rounded-full blur-xl" />
+
+                <div className="relative">
+                  <div className="w-12 h-12 bg-white/15 rounded-2xl flex items-center justify-center mb-6">
+                    <MessageCircle size={24} className="text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white tracking-tight mb-4">
+                    {t("conversationTitle")}
+                  </h3>
+                  <p className="text-white/75 text-[15px] leading-[1.7]">
+                    {t("conversationDescription")}
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Who is Madar For */}
-      <section className="py-32 bg-[#f5f5f7]">
+      {/* Who is Madar For - Bento Audience Cards */}
+      <section className="py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center mb-20"
+            className="mb-14"
           >
-            <h2 className="text-4xl sm:text-5xl font-semibold text-[#1d1d1f] tracking-[-0.02em]">
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-madar-900 tracking-[-0.03em]">
               {t("audienceTitle")}
             </h2>
           </motion.div>
@@ -83,17 +103,21 @@ export function AboutPreview({ locale }: { locale: string }) {
               return (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 25 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="bg-white rounded-[20px] p-7 hover:shadow-[0_4px_30px_rgba(0,0,0,0.06)] transition-all duration-500"
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="bg-white border border-gray-100 rounded-2xl p-7 hover:shadow-xl hover:shadow-madar-600/5 hover:border-madar-200 transition-all duration-500 group"
                 >
-                  <div className="w-11 h-11 bg-madar-50 rounded-[12px] flex items-center justify-center mb-5">
-                    <Icon className="text-madar-600" size={20} />
+                  <div className="w-12 h-12 bg-madar-100 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-madar-200 transition-colors duration-300">
+                    <Icon className="text-madar-600" size={22} />
                   </div>
-                  <h3 className="text-[17px] font-semibold text-[#1d1d1f] mb-2">{a.title}</h3>
-                  <p className="text-[15px] text-[#6e6e73] leading-[1.6]">{a.desc}</p>
+                  <h3 className="text-lg font-bold text-madar-900 mb-2 tracking-tight">
+                    {a.title}
+                  </h3>
+                  <p className="text-[15px] text-gray-500 leading-[1.65]">
+                    {a.desc}
+                  </p>
                 </motion.div>
               );
             })}

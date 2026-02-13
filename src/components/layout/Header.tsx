@@ -34,20 +34,20 @@ export function Header({ locale }: { locale: string }) {
         <div className="flex items-center justify-between h-16 lg:h-[72px]">
           <Link href={`/${locale}`} className="flex items-center gap-2.5">
             <MadarLogo className="h-8 w-8" />
-            <span className="text-lg font-semibold text-[#1d1d1f] tracking-tight">
+            <span className="text-lg font-bold text-madar-900 tracking-tight">
               {locale === "ar" ? "مدار" : "madar"}
             </span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-0.5">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.key}
                 href={`/${locale}${link.href === "/" ? "" : link.href}`}
-                className={`px-4 py-2 text-[13px] font-medium rounded-lg transition-colors ${
+                className={`px-4 py-2 text-[13px] font-semibold rounded-full transition-colors ${
                   isActive(link.href)
                     ? "text-madar-700 bg-madar-50"
-                    : "text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-gray-50"
+                    : "text-gray-500 hover:text-madar-900 hover:bg-gray-50"
                 }`}
               >
                 {t(link.key)}
@@ -59,13 +59,13 @@ export function Header({ locale }: { locale: string }) {
             <LanguageSwitcher locale={locale} />
             <a
               href="#join-community"
-              className="hidden lg:inline-flex items-center justify-center px-5 py-2 text-[13px] font-semibold text-white bg-[#1d1d1f] rounded-full hover:bg-[#333] transition-colors"
+              className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 text-[13px] font-bold text-white bg-madar-600 rounded-full hover:bg-madar-700 transition-colors shadow-sm shadow-madar-600/20"
             >
               {t("joinCta")}
             </a>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-gray-600 hover:text-[#1d1d1f]"
+              className="lg:hidden p-2 text-gray-500 hover:text-madar-900"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -82,10 +82,10 @@ export function Header({ locale }: { locale: string }) {
                 key={link.key}
                 href={`/${locale}${link.href === "/" ? "" : link.href}`}
                 onClick={() => setMobileOpen(false)}
-                className={`px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                className={`px-4 py-3 text-sm font-semibold rounded-xl transition-colors ${
                   isActive(link.href)
                     ? "text-madar-700 bg-madar-50"
-                    : "text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-gray-50"
+                    : "text-gray-500 hover:text-madar-900 hover:bg-gray-50"
                 }`}
               >
                 {t(link.key)}
@@ -94,7 +94,7 @@ export function Header({ locale }: { locale: string }) {
             <a
               href="#join-community"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 inline-flex items-center justify-center px-5 py-3 text-sm font-semibold text-white bg-[#1d1d1f] rounded-full hover:bg-[#333] transition-colors"
+              className="mt-3 inline-flex items-center justify-center px-5 py-3 text-sm font-bold text-white bg-madar-600 rounded-full hover:bg-madar-700 transition-colors shadow-sm shadow-madar-600/20"
             >
               {t("joinCta")}
             </a>

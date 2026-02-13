@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { FileText, Download, ExternalLink } from "lucide-react";
+import { FileText, Download, ExternalLink, BookOpen } from "lucide-react";
 
 export function FeaturedResources({ locale }: { locale: string }) {
   const t = useTranslations("home");
@@ -12,7 +12,7 @@ export function FeaturedResources({ locale }: { locale: string }) {
   const pdfPath = `${basePath}/madar-whitepaper-2026.pdf`;
 
   return (
-    <section className="py-32 bg-white">
+    <section className="py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,13 +20,14 @@ export function FeaturedResources({ locale }: { locale: string }) {
           viewport={{ once: true, margin: "-100px" }}
           className="mb-14"
         >
-          <p className="text-[13px] font-medium uppercase tracking-[0.2em] text-madar-500 mb-5">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-madar-50 border border-madar-200 rounded-full text-madar-600 text-xs font-semibold uppercase tracking-wider mb-6">
+            <BookOpen size={14} />
             {isAr ? "الأبحاث" : "Research"}
-          </p>
-          <h2 className="text-4xl sm:text-5xl font-semibold text-[#1d1d1f] tracking-[-0.02em]">
+          </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-madar-900 tracking-[-0.03em]">
             {t("resourcesTitle")}
           </h2>
-          <p className="mt-5 text-[17px] text-[#6e6e73] leading-[1.65] max-w-2xl">
+          <p className="mt-5 text-lg text-gray-500 leading-[1.65] max-w-2xl">
             {t("resourcesDescription")}
           </p>
         </motion.div>
@@ -37,47 +38,58 @@ export function FeaturedResources({ locale }: { locale: string }) {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="bg-[#f5f5f7] rounded-[28px] p-8 sm:p-10 lg:p-12 hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] transition-all duration-500">
-            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
-              <div className="w-16 h-16 bg-white rounded-[16px] flex items-center justify-center shrink-0 shadow-sm">
-                <FileText className="text-madar-600" size={28} />
+          {/* Large Featured Green Card */}
+          <div className="bg-madar-800 rounded-3xl p-8 sm:p-10 lg:p-14 relative overflow-hidden group hover:shadow-2xl hover:shadow-madar-900/20 transition-all duration-500">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-madar-700/50 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4" />
+            <div className="absolute bottom-0 left-0 w-60 h-60 bg-madar-600/30 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4" />
+
+            <div className="relative flex flex-col lg:flex-row gap-8 lg:gap-14 items-start">
+              <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center shrink-0 backdrop-blur-sm">
+                <FileText className="text-madar-200" size={30} />
               </div>
 
               <div className="flex-1">
-                <div className="flex flex-wrap items-center gap-3 mb-4">
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-madar-100/80 text-madar-700 text-xs font-semibold rounded-full uppercase tracking-wider">
+                <div className="flex flex-wrap items-center gap-3 mb-5">
+                  <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-madar-400/20 text-madar-200 text-xs font-bold rounded-full uppercase tracking-wider backdrop-blur-sm">
                     {isAr ? "ورقة بيضاء" : "White Paper"}
                   </span>
-                  <span className="text-[13px] text-[#86868b]">{isAr ? "فبراير ٢٠٢٦" : "February 2026"}</span>
-                  <span className="text-[13px] text-[#86868b]">23 {isAr ? "صفحة" : "pages"}</span>
+                  <span className="text-sm text-madar-300/60">
+                    {isAr ? "فبراير ٢٠٢٦" : "February 2026"}
+                  </span>
+                  <span className="text-sm text-madar-300/60">
+                    23 {isAr ? "صفحة" : "pages"}
+                  </span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-semibold text-[#1d1d1f] mb-3 tracking-tight">
-                  {isAr ? "لغة التصميم الرقمي للرياض" : "The Digital Design Language of Riyadh"}
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-4 tracking-tight leading-tight">
+                  {isAr
+                    ? "لغة التصميم الرقمي للرياض"
+                    : "The Digital Design Language of Riyadh"}
                 </h3>
 
-                <p className="text-[16px] text-[#6e6e73] leading-[1.7] max-w-2xl">
+                <p className="text-madar-200/70 text-base leading-[1.7] max-w-2xl">
                   {isAr
                     ? "رؤية مملكة حول كيفية تواصل الدول مع الثقة والقوة والشرعية من خلال البرمجيات."
                     : "A Kingdom Lens on How States Communicate Trust, Power, and Legitimacy Through Software."}
                 </p>
 
-                <div className="mt-8 flex flex-wrap gap-3">
+                <div className="mt-10 flex flex-wrap gap-4">
                   <a
                     href={pdfPath}
                     download
-                    className="inline-flex items-center gap-2.5 px-6 py-3 text-[14px] font-semibold text-white bg-[#1d1d1f] rounded-full hover:bg-[#333] transition-colors"
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 text-[15px] font-bold text-madar-900 bg-white rounded-full hover:bg-madar-50 transition-all shadow-lg shadow-black/10 hover:shadow-xl"
                   >
-                    <Download size={15} />
+                    <Download size={16} />
                     {isAr ? "تحميل PDF" : "Download PDF"}
                   </a>
                   <a
                     href={pdfPath}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2.5 px-6 py-3 text-[14px] font-semibold text-[#1d1d1f] bg-white rounded-full hover:bg-gray-50 transition-colors shadow-sm"
+                    className="inline-flex items-center gap-2.5 px-7 py-3.5 text-[15px] font-bold text-white bg-white/10 rounded-full hover:bg-white/20 transition-all backdrop-blur-sm border border-white/10"
                   >
-                    <ExternalLink size={15} />
+                    <ExternalLink size={16} />
                     {isAr ? "اقرأ عبر الإنترنت" : "Read Online"}
                   </a>
                 </div>

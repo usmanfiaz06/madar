@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { MadarLogo } from "../ui/MadarLogo";
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail, MapPin } from "lucide-react";
 
 export function Footer({ locale }: { locale: string }) {
   const t = useTranslations("footer");
@@ -39,31 +39,33 @@ export function Footer({ locale }: { locale: string }) {
   };
 
   return (
-    <footer className="bg-[#1d1d1f] text-white">
+    <footer className="bg-madar-900 text-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          <div className="lg:col-span-1 space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* Brand */}
+          <div className="lg:col-span-1 space-y-5">
             <div className="flex items-center gap-2.5">
-              <MadarLogo className="h-7 w-7" variant="light" />
-              <span className="text-lg font-semibold tracking-tight">
+              <MadarLogo className="h-8 w-8" variant="light" />
+              <span className="text-lg font-bold tracking-tight text-white">
                 {locale === "ar" ? "مدار" : "madar"}
               </span>
             </div>
-            <p className="text-white/40 text-[14px] leading-[1.65] max-w-xs">
+            <p className="text-madar-200/50 text-[14px] leading-[1.7] max-w-xs">
               {t("description")}
             </p>
           </div>
 
+          {/* Quick Links */}
           <div>
-            <h3 className="text-[12px] font-semibold uppercase tracking-[0.15em] text-white/30 mb-5">
+            <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-madar-300/50 mb-6">
               {t("quickLinks")}
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3.5">
               {links.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-[14px] text-white/50 hover:text-white transition-colors"
+                    className="text-[14px] text-madar-200/60 hover:text-madar-200 transition-colors font-medium"
                   >
                     {link.label}
                   </Link>
@@ -72,48 +74,73 @@ export function Footer({ locale }: { locale: string }) {
             </ul>
           </div>
 
+          {/* Connect */}
           <div>
-            <h3 className="text-[12px] font-semibold uppercase tracking-[0.15em] text-white/30 mb-5">
+            <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-madar-300/50 mb-6">
               {t("connect")}
             </h3>
-            <ul className="space-y-3 text-[14px] text-white/50">
-              <li>hello@madar.sa</li>
-              <li>{locale === "ar" ? "الرياض، المملكة العربية السعودية" : "Riyadh, Saudi Arabia"}</li>
+            <ul className="space-y-4">
+              <li className="flex items-center gap-3 text-[14px] text-madar-200/60">
+                <div className="w-8 h-8 bg-madar-800 rounded-lg flex items-center justify-center shrink-0">
+                  <Mail size={14} className="text-madar-400" />
+                </div>
+                <span>hello@madar.sa</span>
+              </li>
+              <li className="flex items-center gap-3 text-[14px] text-madar-200/60">
+                <div className="w-8 h-8 bg-madar-800 rounded-lg flex items-center justify-center shrink-0">
+                  <MapPin size={14} className="text-madar-400" />
+                </div>
+                <span>
+                  {locale === "ar"
+                    ? "الرياض، المملكة العربية السعودية"
+                    : "Riyadh, Saudi Arabia"}
+                </span>
+              </li>
             </ul>
           </div>
 
+          {/* Email Signup */}
           <div>
-            <h3 className="text-[12px] font-semibold uppercase tracking-[0.15em] text-white/30 mb-5">
+            <h3 className="text-xs font-bold uppercase tracking-[0.15em] text-madar-300/50 mb-6">
               {t("joinTitle")}
             </h3>
             {joined ? (
-              <p className="text-[14px] text-white/50">
-                {locale === "ar" ? "شكراً لانضمامك!" : "Thanks for joining!"}
-              </p>
+              <div className="bg-madar-800 rounded-xl px-4 py-3">
+                <p className="text-[14px] text-madar-300 font-medium">
+                  {locale === "ar" ? "شكرا لانضمامك!" : "Thanks for joining!"}
+                </p>
+              </div>
             ) : (
-              <form onSubmit={handleJoin} className="flex gap-2">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={t("joinPlaceholder")}
-                  required
-                  className="flex-1 px-4 py-2.5 bg-white/[0.04] border border-white/[0.08] rounded-full text-[13px] text-white placeholder-white/25 focus:ring-2 focus:ring-madar-400/50 focus:border-transparent transition-all"
-                />
-                <button
-                  type="submit"
-                  className="px-4 py-2.5 bg-white/10 text-white rounded-full hover:bg-white/15 transition-colors"
-                >
-                  <ArrowRight size={14} />
-                </button>
+              <form onSubmit={handleJoin} className="space-y-3">
+                <div className="flex gap-2">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={t("joinPlaceholder")}
+                    required
+                    className="flex-1 px-4 py-3 bg-madar-800 border border-madar-700 rounded-xl text-[13px] text-white placeholder-madar-200/30 focus:ring-2 focus:ring-madar-400/50 focus:border-transparent transition-all"
+                  />
+                  <button
+                    type="submit"
+                    className="px-4 py-3 bg-madar-600 text-white rounded-xl hover:bg-madar-500 transition-colors shadow-sm"
+                  >
+                    <ArrowRight size={16} />
+                  </button>
+                </div>
               </form>
             )}
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[12px] text-white/25">&copy; {t("copyright")}</p>
-          <p className="text-[12px] text-white/20 italic">{t("tagline")}</p>
+        {/* Bottom Bar */}
+        <div className="mt-16 pt-8 border-t border-madar-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[12px] text-madar-200/30 font-medium">
+            &copy; {t("copyright")}
+          </p>
+          <p className="text-[12px] text-madar-200/20 italic">
+            {t("tagline")}
+          </p>
         </div>
       </div>
     </footer>
