@@ -14,7 +14,7 @@ export function MadarLogo({
   if (full) {
     return (
       <Image
-        src="/madar/madar-logo.svg"
+        src="/madar-logo.svg"
         alt="Madar"
         width={150}
         height={60}
