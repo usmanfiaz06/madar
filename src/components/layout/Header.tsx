@@ -32,11 +32,8 @@ export function Header({ locale }: { locale: string }) {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-[72px]">
-          <Link href={`/${locale}`} className="flex items-center gap-2.5">
-            <MadarLogo className="h-8 w-8" />
-            <span className="text-lg font-bold text-madar-900 tracking-tight">
-              {locale === "ar" ? "مدار" : "madar"}
-            </span>
+          <Link href={`/${locale}`} className="flex items-center">
+            <MadarLogo className="h-8" full />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1">
