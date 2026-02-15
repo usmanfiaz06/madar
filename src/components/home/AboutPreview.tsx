@@ -11,35 +11,146 @@ export function AboutPreview({ locale }: { locale: string }) {
 
   return (
     <>
-      {/* Top: Label + Massive Heading + Description + CTA */}
-      <section className="py-24 lg:py-32 bg-white">
+      {/* Top: Label + Massive Heading + Description + CTA with Orbit Illustration */}
+      <section className="py-24 lg:py-32 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-            className="max-w-4xl"
-          >
-            <span className="text-sm font-bold uppercase tracking-[0.2em] text-madar-600 mb-6 block">
-              {isAr ? "عن مدار" : "ABOUT MADAR"}
-            </span>
-            <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-extrabold text-madar-900 tracking-[-0.04em] leading-[1] mb-8">
-              {t("aboutTitle")}
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-500 leading-[1.7] max-w-3xl">
-              {t("aboutDescription")}
-            </p>
-            <div className="mt-10">
-              <Button
-                href={`/${locale}/about`}
-                className="bg-madar-600 text-white font-bold text-[15px] px-8 py-4 rounded-full hover:bg-madar-700 shadow-lg shadow-madar-600/20 gap-2.5"
-              >
-                {t("aboutCta")}
-                <ArrowRight size={16} />
-              </Button>
-            </div>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left — Text content */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+            >
+              <span className="text-sm font-bold uppercase tracking-[0.2em] text-madar-600 mb-6 block">
+                {isAr ? "عن مدار" : "ABOUT MADAR"}
+              </span>
+              <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-extrabold text-madar-900 tracking-[-0.04em] leading-[1] mb-8">
+                {t("aboutTitle")}
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-500 leading-[1.7] max-w-xl">
+                {t("aboutDescription")}
+              </p>
+              <div className="mt-10">
+                <Button
+                  href={`/${locale}/about`}
+                  className="bg-madar-600 text-white font-bold text-[15px] px-8 py-4 rounded-full hover:bg-madar-700 shadow-lg shadow-madar-600/20 gap-2.5"
+                >
+                  {t("aboutCta")}
+                  <ArrowRight size={16} />
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Right — Orbit Illustration */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative flex items-center justify-center"
+            >
+              <div className="relative w-full max-w-[480px] aspect-square mx-auto">
+                {/* Ambient glow */}
+                <div className="absolute inset-0 bg-madar-500/5 rounded-full blur-[80px]" />
+
+                {/* Outer orbit ring */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0"
+                >
+                  <div className="absolute inset-[5%] border border-madar-200/40 rounded-full" />
+                  {/* Satellite — Trust */}
+                  <div className="absolute top-[5%] left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-16 h-16 bg-white rounded-2xl shadow-lg shadow-madar-600/10 border border-madar-100 flex items-center justify-center">
+                      <span className="text-[10px] font-bold text-madar-700 uppercase tracking-wider">
+                        {isAr ? "ثقة" : "Trust"}
+                      </span>
+                    </div>
+                  </div>
+                  {/* Satellite — Identity */}
+                  <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 translate-y-1/2">
+                    <div className="w-16 h-16 bg-white rounded-2xl shadow-lg shadow-madar-600/10 border border-madar-100 flex items-center justify-center">
+                      <span className="text-[10px] font-bold text-madar-700 uppercase tracking-wider">
+                        {isAr ? "هوية" : "Identity"}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Middle orbit ring */}
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0"
+                >
+                  <div className="absolute inset-[18%] border border-madar-300/30 rounded-full border-dashed" />
+                  {/* Satellite — Design */}
+                  <div className="absolute top-[18%] right-[10%] -translate-y-1/2">
+                    <div className="w-14 h-14 bg-madar-50 rounded-xl shadow-md shadow-madar-600/10 border border-madar-200 flex items-center justify-center">
+                      <span className="text-[9px] font-bold text-madar-600 uppercase tracking-wider">
+                        {isAr ? "تصميم" : "Design"}
+                      </span>
+                    </div>
+                  </div>
+                  {/* Satellite — Policy */}
+                  <div className="absolute bottom-[18%] left-[10%] translate-y-1/2">
+                    <div className="w-14 h-14 bg-madar-50 rounded-xl shadow-md shadow-madar-600/10 border border-madar-200 flex items-center justify-center">
+                      <span className="text-[9px] font-bold text-madar-600 uppercase tracking-wider">
+                        {isAr ? "سياسة" : "Policy"}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Inner orbit ring */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0"
+                >
+                  <div className="absolute inset-[32%] border border-madar-400/20 rounded-full" />
+                  {/* Small dot satellites */}
+                  <div className="absolute top-[32%] left-[25%]">
+                    <div className="w-3 h-3 bg-madar-400 rounded-full shadow-lg shadow-madar-400/40" />
+                  </div>
+                  <div className="absolute bottom-[32%] right-[25%]">
+                    <div className="w-2.5 h-2.5 bg-madar-300 rounded-full shadow-lg shadow-madar-300/40" />
+                  </div>
+                </motion.div>
+
+                {/* Center hub — "مدار" / "MADAR" */}
+                <div className="absolute inset-[38%] bg-madar-800 rounded-full flex items-center justify-center shadow-2xl shadow-madar-800/30">
+                  <div className="text-center">
+                    <span className="text-white font-extrabold text-lg tracking-tight block">
+                      {isAr ? "مدار" : "Madar"}
+                    </span>
+                    <span className="text-madar-300/60 text-[9px] font-medium tracking-widest uppercase">
+                      {isAr ? "محور" : "Orbit"}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Floating accent dots */}
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute top-[12%] right-[20%] w-2 h-2 bg-madar-400/50 rounded-full"
+                />
+                <motion.div
+                  animate={{ y: [0, 6, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="absolute bottom-[15%] left-[22%] w-1.5 h-1.5 bg-madar-300/40 rounded-full"
+                />
+                <motion.div
+                  animate={{ y: [0, -5, 0] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                  className="absolute top-[40%] right-[8%] w-1.5 h-1.5 bg-madar-500/30 rounded-full"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

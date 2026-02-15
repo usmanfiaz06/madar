@@ -44,11 +44,8 @@ export function Footer({ locale }: { locale: string }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1 space-y-5">
-            <div className="flex items-center gap-2.5">
-              <MadarLogo className="h-8 w-8" variant="light" />
-              <span className="text-lg font-bold tracking-tight text-white">
-                {locale === "ar" ? "مدار" : "madar"}
-              </span>
+            <div className="flex items-center">
+              <MadarLogo className="h-8" full variant="light" />
             </div>
             <p className="text-madar-200/50 text-[14px] leading-[1.7] max-w-xs">
               {t("description")}

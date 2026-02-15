@@ -27,6 +27,19 @@ export const metadata: Metadata = {
     "institutional design",
     "design language",
   ],
+  openGraph: {
+    type: "website",
+    siteName: "Madar",
+    title: "Madar — The Digital Design Language of Riyadh",
+    description:
+      "How States Communicate Trust, Power, and Legitimacy Through Software. A research and community initiative starting from Riyadh.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Madar — The Digital Design Language of Riyadh",
+    description:
+      "How States Communicate Trust, Power, and Legitimacy Through Software.",
+  },
 };
 
 export default async function LocaleLayout({
