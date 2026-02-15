@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { FileText, Download, ExternalLink, BookOpen } from "lucide-react";
+import { FileText, Download, ExternalLink } from "lucide-react";
 
 export function ResourcesClient() {
   const t = useTranslations("resources");
@@ -15,23 +15,31 @@ export function ResourcesClient() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="py-28 lg:py-36 bg-white">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      {/* Immersive Hero */}
+      <section className="relative min-h-[75vh] flex items-end bg-madar-900 overflow-hidden">
+        {/* Rich gradient background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-madar-900 via-madar-800 to-madar-700" />
+          <div className="absolute top-0 left-1/3 w-[600px] h-[600px] bg-madar-600/20 rounded-full blur-[180px] -translate-y-1/3" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-madar-500/15 rounded-full blur-[150px] translate-y-1/4 translate-x-1/4" />
+          <div className="absolute top-1/2 left-0 w-[350px] h-[350px] bg-madar-400/10 rounded-full blur-[120px] -translate-x-1/4" />
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-madar-900/80 to-transparent" />
+        </div>
+
+        <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-16 lg:pb-20 pt-40">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-3xl"
+            transition={{ duration: 0.8 }}
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-madar-50 border border-madar-200 rounded-full text-madar-600 text-xs font-semibold uppercase tracking-wider mb-8">
-              <BookOpen size={14} />
-              {isAr ? "الموارد" : "Resources"}
+            <span className="text-sm font-bold uppercase tracking-[0.25em] text-madar-300/70 mb-6 block">
+              {isAr ? "الموارد والأبحاث" : "RESOURCES & RESEARCH"}
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-madar-900 tracking-[-0.03em] leading-[1.08]">
+            <h1 className="text-[clamp(2.5rem,7vw,5.5rem)] font-extrabold text-white tracking-[-0.04em] leading-[0.95] max-w-4xl mb-6">
               {t("title")}
             </h1>
-            <p className="mt-7 text-lg text-gray-500 leading-[1.7]">
+            <p className="text-lg sm:text-xl text-madar-200/60 leading-relaxed max-w-2xl">
               {t("subtitle")}
             </p>
           </motion.div>
@@ -48,7 +56,6 @@ export function ResourcesClient() {
             transition={{ duration: 0.6 }}
           >
             <div className="bg-madar-800 rounded-3xl p-8 sm:p-10 lg:p-14 relative overflow-hidden">
-              {/* Decorative elements */}
               <div className="absolute top-0 right-0 w-80 h-80 bg-madar-700/50 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/4" />
               <div className="absolute bottom-0 left-0 w-60 h-60 bg-madar-600/30 rounded-full blur-[80px] translate-y-1/3 -translate-x-1/4" />
 
