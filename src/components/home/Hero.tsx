@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Button } from "../ui/Button";
+import { openJoinModal } from "../ui/JoinCommunityModal";
 import { ArrowRight, Shield, Layers, Globe, MessageCircle } from "lucide-react";
 
 const pillarIcons = [Shield, Layers, Globe, MessageCircle];
@@ -66,13 +67,13 @@ export function Hero({ locale }: { locale: string }) {
           transition={{ delay: 0.55, duration: 0.7 }}
           className="mt-10 flex flex-wrap items-center gap-4"
         >
-          <a
-            href="#join-community"
+          <button
+            onClick={openJoinModal}
             className="inline-flex items-center gap-2.5 px-8 py-4 bg-madar-600 text-white font-semibold rounded-full hover:bg-madar-700 transition-all text-[15px] shadow-lg shadow-madar-600/25 hover:shadow-xl hover:shadow-madar-600/30"
           >
             {t("cta")}
             <ArrowRight size={16} />
-          </a>
+          </button>
           <Button
             href={`/${locale}/resources`}
             variant="outline"

@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Users, Bell } from "lucide-react";
+import { openJoinModal } from "@/components/ui/JoinCommunityModal";
 
 export function EventsClient() {
   const t = useTranslations("events");
@@ -51,12 +52,12 @@ export function EventsClient() {
               <Bell className="text-madar-500" size={24} />
             </div>
             <p className="text-[15px] text-gray-500 mb-8">{t("noUpcoming")}</p>
-            <a
-              href="#join-community"
+            <button
+              onClick={openJoinModal}
               className="inline-flex items-center justify-center px-7 py-3.5 text-[15px] font-bold text-white bg-madar-600 rounded-full hover:bg-madar-700 transition-colors shadow-lg shadow-madar-600/20"
             >
               {t("subscribeCta")}
-            </a>
+            </button>
           </motion.div>
         </div>
       </section>

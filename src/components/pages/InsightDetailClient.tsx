@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, Clock, Tag, CalendarDays, ArrowRight, Users } from "lucide-react";
+import { openJoinModal } from "@/components/ui/JoinCommunityModal";
 import { articles } from "@/data/articles";
 import {
   VennTrustDiagram,
@@ -153,15 +154,15 @@ export function InsightDetailClient({ slug }: { slug: string }) {
                             : "Be part of a growing community of designers and researchers redefining institutional design. Join the conversation, access exclusive content, and help shape the future of design language."}
                         </p>
                       </div>
-                      <a
-                        href={`/${locale}/contact`}
+                      <button
+                        onClick={openJoinModal}
                         className="inline-flex items-center gap-2 px-6 py-3 bg-madar-400 hover:bg-madar-300 text-madar-950 text-sm font-bold rounded-full transition-colors duration-300 shrink-0"
                       >
                         {isAr ? "انضم الآن" : "Join Now"}
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
-                      </a>
+                      </button>
                     </div>
                   </motion.div>
                 )}

@@ -19,7 +19,7 @@ export function ContactClient() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     try {
-      await fetch("https://formsubmit.co/ajax/hello@madar.sa", {
+      await fetch("https://formsubmit.co/ajax/hello@madar.cx", {
         method: "POST",
         body: formData,
       });
@@ -31,7 +31,7 @@ export function ContactClient() {
       const message = formData.get("message") as string;
       const subject = encodeURIComponent("Contact from Madar Website");
       const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nLinkedIn: ${linkedin}\nMessage: ${message}`);
-      window.location.href = `mailto:hello@madar.sa?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:hello@madar.cx?subject=${subject}&body=${body}`;
       setSubmitted(true);
     } finally {
       setSubmitting(false);

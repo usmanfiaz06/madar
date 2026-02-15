@@ -5,6 +5,7 @@ import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { JoinCommunityModal } from "@/components/ui/JoinCommunityModal";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -76,6 +77,7 @@ export default async function LocaleLayout({
           <Header locale={locale} />
           <main className="pt-16 lg:pt-20">{children}</main>
           <Footer locale={locale} />
+          <JoinCommunityModal locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>
