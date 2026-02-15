@@ -16,15 +16,15 @@
     "ctaSecondary": "Read the White Paper",
     "badge": "A Conversation Platform"
   },
-  "stats": {
-    "stat1Value": "1",
-    "stat1Label": "White Paper Published",
-    "stat2Value": "30+",
-    "stat2Label": "Community Members",
-    "stat3Value": "1",
-    "stat3Label": "Roundtable Hosted",
-    "stat4Value": "2026",
-    "stat4Label": "Launched in Riyadh"
+  "pillars": {
+    "pillar1Title": "Digital Trust",
+    "pillar1Desc": "How states communicate trust, power, and legitimacy through software.",
+    "pillar2Title": "Design Language",
+    "pillar2Desc": "The emerging discipline shaping how institutions present themselves digitally.",
+    "pillar3Title": "Cultural Authenticity",
+    "pillar3Desc": "Design rooted in heritage, context, and local identity.",
+    "pillar4Title": "Open Dialogue",
+    "pillar4Desc": "Bringing together design leaders across sectors and borders."
   },
   "home": {
     "aboutTitle": "What is Madar?",
