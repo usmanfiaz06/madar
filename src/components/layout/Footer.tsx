@@ -28,7 +28,7 @@ export function Footer({ locale }: { locale: string }) {
       formData.append("email", email);
       formData.append("_subject", "New Community Email Signup");
       formData.append("_captcha", "false");
-      await fetch("https://formsubmit.co/ajax/hello@madar.sa", {
+      await fetch("https://formsubmit.co/ajax/hello@madar.cx", {
         method: "POST",
         body: formData,
       });
@@ -81,7 +81,7 @@ export function Footer({ locale }: { locale: string }) {
                 <div className="w-8 h-8 bg-madar-800 rounded-lg flex items-center justify-center shrink-0">
                   <Mail size={14} className="text-madar-400" />
                 </div>
-                <span>hello@madar.sa</span>
+                <span>hello@madar.cx</span>
               </li>
               <li className="flex items-center gap-3 text-[14px] text-madar-200/60">
                 <div className="w-8 h-8 bg-madar-800 rounded-lg flex items-center justify-center shrink-0">

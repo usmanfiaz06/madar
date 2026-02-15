@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { CheckCircle, ArrowRight, Users, Sparkles } from "lucide-react";
+import { CheckCircle, ArrowRight, Users, Sparkles, Linkedin } from "lucide-react";
 
 export function JoinCommunity({ locale }: { locale: string }) {
   const t = useTranslations("home");
@@ -27,7 +27,7 @@ export function JoinCommunity({ locale }: { locale: string }) {
     const formData = new FormData(form);
 
     try {
-      await fetch("https://formsubmit.co/ajax/hello@madar.sa", {
+      await fetch("https://formsubmit.co/ajax/hello@madar.cx", {
         method: "POST",
         body: formData,
       });
@@ -41,7 +41,7 @@ export function JoinCommunity({ locale }: { locale: string }) {
       const body = encodeURIComponent(
         `Name: ${name}\nEmail: ${email}\nRole: ${role}\nMessage: ${message}`
       );
-      window.location.href = `mailto:hello@madar.sa?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:hello@madar.cx?subject=${subject}&body=${body}`;
       setSubmitted(true);
     } finally {
       setSubmitting(false);
@@ -156,6 +156,21 @@ export function JoinCommunity({ locale }: { locale: string }) {
                     required
                     className="w-full px-5 py-3.5 bg-white/10 border border-white/15 rounded-xl text-white text-[15px] placeholder-white/30 focus:ring-2 focus:ring-madar-300/50 focus:border-transparent focus:bg-white/15 transition-all backdrop-blur-sm"
                     placeholder={isAr ? "بريدك الإلكتروني" : "your@email.com"}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-madar-200 mb-2.5">
+                    <span className="flex items-center gap-1.5">
+                      <Linkedin size={14} className="text-madar-300" />
+                      {isAr ? "رابط لينكدإن" : "LinkedIn Profile"}
+                    </span>
+                  </label>
+                  <input
+                    type="url"
+                    name="linkedin"
+                    className="w-full px-5 py-3.5 bg-white/10 border border-white/15 rounded-xl text-white text-[15px] placeholder-white/30 focus:ring-2 focus:ring-madar-300/50 focus:border-transparent focus:bg-white/15 transition-all backdrop-blur-sm"
+                    placeholder="https://linkedin.com/in/..."
                   />
                 </div>
 

@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Layers, Lock, Palette, Users, Sparkles } from "lucide-react";
+import { openJoinModal } from "@/components/ui/JoinCommunityModal";
 
 const focusIcons = [Layers, Lock, Palette, Users];
 
@@ -229,15 +230,15 @@ export function AboutClient() {
                       : "Be part of a community redefining institutional design"}
                   </p>
                 </div>
-                <a
-                  href={`/${locale}/contact`}
+                <button
+                  onClick={openJoinModal}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-madar-400 hover:bg-madar-300 text-madar-950 text-sm font-bold rounded-full transition-colors duration-300 shrink-0"
                 >
                   {isAr ? "انضم للمجتمع" : "Join Community"}
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
           </motion.div>
