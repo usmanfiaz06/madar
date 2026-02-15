@@ -3,17 +3,19 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Button } from "../ui/Button";
-import { ArrowRight, FileText, Users, MessageSquare, Sparkles } from "lucide-react";
+import { ArrowRight, Shield, Layers, Globe, MessageCircle } from "lucide-react";
+
+const pillarIcons = [Shield, Layers, Globe, MessageCircle];
 
 export function Hero({ locale }: { locale: string }) {
   const t = useTranslations("hero");
-  const s = useTranslations("stats");
+  const p = useTranslations("pillars");
 
-  const stats = [
-    { value: s("stat1Value"), label: s("stat1Label"), icon: FileText, span: "col-span-1" },
-    { value: s("stat2Value"), label: s("stat2Label"), icon: Users, span: "col-span-1" },
-    { value: s("stat3Value"), label: s("stat3Label"), icon: MessageSquare, span: "col-span-1" },
-    { value: s("stat4Value"), label: s("stat4Label"), icon: Sparkles, span: "col-span-1" },
+  const pillars = [
+    { title: p("pillar1Title"), desc: p("pillar1Desc"), icon: pillarIcons[0] },
+    { title: p("pillar2Title"), desc: p("pillar2Desc"), icon: pillarIcons[1] },
+    { title: p("pillar3Title"), desc: p("pillar3Desc"), icon: pillarIcons[2] },
+    { title: p("pillar4Title"), desc: p("pillar4Desc"), icon: pillarIcons[3] },
   ];
 
   return (
@@ -81,43 +83,42 @@ export function Hero({ locale }: { locale: string }) {
           </Button>
         </motion.div>
 
-        {/* Bento Grid Stats */}
+        {/* Pillar Cards - What Madar Explores */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4"
+          className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
         >
-          {stats.map((stat, i) => {
-            const Icon = stat.icon;
-            // Alternate card styles for bento look
-            const isGreen = i === 0 || i === 1;
+          {pillars.map((pillar, i) => {
+            const Icon = pillar.icon;
+            const isAccent = i === 0 || i === 3;
             return (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 + i * 0.1 }}
-                className={`relative rounded-2xl p-6 lg:p-8 overflow-hidden group transition-all duration-300 hover:scale-[1.02] ${
-                  isGreen
+                className={`relative rounded-2xl p-6 lg:p-7 overflow-hidden group transition-all duration-300 hover:scale-[1.02] ${
+                  isAccent
                     ? "bg-madar-600 text-white shadow-lg shadow-madar-600/20"
                     : "bg-madar-50 text-madar-900 border border-madar-100"
                 }`}
               >
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${
-                  isGreen ? "bg-white/15" : "bg-madar-200/60"
+                  isAccent ? "bg-white/15" : "bg-madar-200/60"
                 }`}>
-                  <Icon size={20} className={isGreen ? "text-white" : "text-madar-600"} />
+                  <Icon size={20} className={isAccent ? "text-white" : "text-madar-600"} />
                 </div>
-                <p className={`text-4xl sm:text-5xl font-extrabold tracking-tight ${
-                  isGreen ? "text-white" : "text-madar-700"
+                <h3 className={`text-lg font-bold tracking-tight mb-1.5 ${
+                  isAccent ? "text-white" : "text-madar-900"
                 }`}>
-                  {stat.value}
-                </p>
-                <p className={`mt-2 text-sm font-medium ${
-                  isGreen ? "text-white/70" : "text-madar-600/70"
+                  {pillar.title}
+                </h3>
+                <p className={`text-sm leading-relaxed ${
+                  isAccent ? "text-white/70" : "text-gray-500"
                 }`}>
-                  {stat.label}
+                  {pillar.desc}
                 </p>
               </motion.div>
             );
