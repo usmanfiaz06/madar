@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, CheckCircle, MessageSquare } from "lucide-react";
+import { Mail, MapPin, CheckCircle, MessageSquare, Linkedin } from "lucide-react";
 
 export function ContactClient() {
   const t = useTranslations("contact");
@@ -27,9 +27,10 @@ export function ContactClient() {
     } catch {
       const name = formData.get("name") as string;
       const email = formData.get("email") as string;
+      const linkedin = formData.get("linkedin") as string;
       const message = formData.get("message") as string;
       const subject = encodeURIComponent("Contact from Madar Website");
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nLinkedIn: ${linkedin}\nMessage: ${message}`);
       window.location.href = `mailto:hello@madar.sa?subject=${subject}&body=${body}`;
       setSubmitted(true);
     } finally {
@@ -116,15 +117,31 @@ export function ContactClient() {
                       />
                     </div>
                   </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-madar-900 mb-2.5">
-                      {t("organizationLabel")}
-                    </label>
-                    <input
-                      type="text"
-                      name="organization"
-                      className="w-full px-5 py-3.5 border border-gray-200 rounded-xl text-[15px] focus:ring-2 focus:ring-madar-400/50 focus:border-transparent transition-all bg-white"
-                    />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-sm font-semibold text-madar-900 mb-2.5">
+                        {t("organizationLabel")}
+                      </label>
+                      <input
+                        type="text"
+                        name="organization"
+                        className="w-full px-5 py-3.5 border border-gray-200 rounded-xl text-[15px] focus:ring-2 focus:ring-madar-400/50 focus:border-transparent transition-all bg-white"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-madar-900 mb-2.5">
+                        <span className="flex items-center gap-1.5">
+                          <Linkedin size={14} className="text-madar-500" />
+                          {isAr ? "رابط لينكدإن" : "LinkedIn Profile"}
+                        </span>
+                      </label>
+                      <input
+                        type="url"
+                        name="linkedin"
+                        placeholder={isAr ? "https://linkedin.com/in/..." : "https://linkedin.com/in/..."}
+                        className="w-full px-5 py-3.5 border border-gray-200 rounded-xl text-[15px] focus:ring-2 focus:ring-madar-400/50 focus:border-transparent transition-all bg-white placeholder:text-gray-300"
+                      />
+                    </div>
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-madar-900 mb-2.5">
