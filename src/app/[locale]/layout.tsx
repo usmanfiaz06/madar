@@ -13,7 +13,7 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://usmanfiaz06.github.io/madar"),
+  metadataBase: new URL("https://madar.cx"),
   title: {
     default: "Madar — The Digital Design Language of Riyadh",
     template: "%s | Madar",
