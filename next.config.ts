@@ -5,7 +5,6 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/madar",
   images: {
     unoptimized: true,
   },
