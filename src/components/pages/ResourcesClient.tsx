@@ -10,8 +10,7 @@ export function ResourcesClient() {
   const { locale } = useParams();
   const isAr = locale === "ar";
 
-  const basePath = "/madar";
-  const pdfPath = `${basePath}/madar-whitepaper-2026.pdf`;
+  const pdfPath = "/madar-whitepaper-2026.pdf";
 
   return (
     <>
